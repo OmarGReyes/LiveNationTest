@@ -16,6 +16,7 @@
 		0D0C1EA82BA60EA600B1AFF3 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C1EA72BA60EA600B1AFF3 /* Endpoint.swift */; };
 		0D0C1EAA2BA60EF400B1AFF3 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C1EA92BA60EF400B1AFF3 /* HTTPClient.swift */; };
 		0D0C1EAC2BA60F1D00B1AFF3 /* LiveNatioEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C1EAB2BA60F1D00B1AFF3 /* LiveNatioEndpoint.swift */; };
+		0D0C1EAF2BA6144400B1AFF3 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C1EAE2BA6144400B1AFF3 /* SearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		0D0C1EA72BA60EA600B1AFF3 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0D0C1EA92BA60EF400B1AFF3 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		0D0C1EAB2BA60F1D00B1AFF3 /* LiveNatioEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveNatioEndpoint.swift; sourceTree = "<group>"; };
+		0D0C1EAE2BA6144400B1AFF3 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		0D0C1E932BA60E3200B1AFF3 /* LiveNationTest */ = {
 			isa = PBXGroup;
 			children = (
+				0D0C1EAD2BA613E700B1AFF3 /* DTOs */,
 				0D0C1EA22BA60E4A00B1AFF3 /* Networking */,
 				0D0C1E942BA60E3200B1AFF3 /* LiveNationTestApp.swift */,
 				0D0C1E962BA60E3200B1AFF3 /* ContentView.swift */,
@@ -88,6 +91,14 @@
 				0D0C1EAB2BA60F1D00B1AFF3 /* LiveNatioEndpoint.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		0D0C1EAD2BA613E700B1AFF3 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				0D0C1EAE2BA6144400B1AFF3 /* SearchResponse.swift */,
+			);
+			path = DTOs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 			files = (
 				0D0C1EA62BA60E8900B1AFF3 /* RequestMethod.swift in Sources */,
 				0D0C1E972BA60E3200B1AFF3 /* ContentView.swift in Sources */,
+				0D0C1EAF2BA6144400B1AFF3 /* SearchResponse.swift in Sources */,
 				0D0C1EAA2BA60EF400B1AFF3 /* HTTPClient.swift in Sources */,
 				0D0C1E952BA60E3200B1AFF3 /* LiveNationTestApp.swift in Sources */,
 				0D0C1EAC2BA60F1D00B1AFF3 /* LiveNatioEndpoint.swift in Sources */,
