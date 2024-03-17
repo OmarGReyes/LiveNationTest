@@ -31,7 +31,7 @@ extension EventEntity {
         return URL(string: imageURLString)!
     }
     
-    var eventLocation: String {
+    var location: String {
         if !city.isEmpty && !state.isEmpty {
             return city + ", " + state
         } else if !city.isEmpty && state.isEmpty {

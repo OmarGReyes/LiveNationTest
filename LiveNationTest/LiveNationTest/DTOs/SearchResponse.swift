@@ -59,7 +59,6 @@ struct Dates: Codable {
 // MARK: - Start
 struct Start: Codable {
     let localDate: String?
-    let dateTBD, dateTBA, timeTBA, noSpecificTime: Bool?
 }
 
 // MARK: - EventEmbedded
@@ -81,5 +80,5 @@ struct City: Codable {
 
 // MARK: - State
 struct EventState: Codable {
-    let name, stateCode: String?
+    let stateCode: String?
 }

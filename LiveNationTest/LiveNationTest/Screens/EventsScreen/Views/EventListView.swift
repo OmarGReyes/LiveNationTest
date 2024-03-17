@@ -43,7 +43,7 @@ struct EventListView: View {
                     Text(event.venue)
                         .font(.system(size: Constants.eventListViewTextSize))
                 }
-                Text(event.eventLocation)
+                Text(event.location)
                     .font(.system(size: Constants.eventListViewTextSize))
             }
         })
