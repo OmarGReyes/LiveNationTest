@@ -7,17 +7,18 @@
 
 import Foundation
 
-// MARK: HttpClient Protocol
+// MARK: - HttpClient Protocol
 protocol HTTPClient {
     func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError>
 }
 
-// MARK: HttpClient Extension
+// MARK: - HttpClient default implementation
 extension HTTPClient {
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,
         responseModel: T.Type
     ) async -> Result<T, RequestError> {
+        // MARK: urlComponents
         var urlComponents = URLComponents()
         urlComponents.scheme = endpoint.scheme
         urlComponents.host = endpoint.host
@@ -30,6 +31,7 @@ extension HTTPClient {
             return .failure(.invalidURL)
         }
         
+        // MARK: Request
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
@@ -38,10 +40,12 @@ extension HTTPClient {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         }
         
+        // MARK: URLSession Configutarion
         let sessionConfig = URLSessionConfiguration.default
         sessionConfig.timeoutIntervalForResource = Constants.networkTimeoutInterval
         let session = URLSession(configuration: sessionConfig)
         
+        // MARK: Request execution
         do {
             let (data, response) = try await session.data(for: request, delegate: nil)
             guard let response = response as? HTTPURLResponse else {

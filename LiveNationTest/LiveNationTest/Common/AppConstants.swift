@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Constants
 struct Constants {
     static let cacheAsyncImageScale = 1.0
     static let dateFormatterYyyyMMDd = "yyyy-MM-dd"

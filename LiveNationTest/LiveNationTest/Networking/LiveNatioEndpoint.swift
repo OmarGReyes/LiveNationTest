@@ -5,42 +5,42 @@
 //  Created by Omar Gonzalez on 16/03/24.
 //
 
-// MARK: MeLiEndpoint Enum
+// MARK: - MeLiEndpoint Enum
 enum LiveNationEndpoint {
     case search(term: String)
 }
 
-// MARK: MeLiEndpoint Enum extension
+// MARK: - MeLiEndpoint Enum extension
 extension LiveNationEndpoint: Endpoint {
-    // MARK: - path
+    // MARK: path
     var path: String {
         switch self {
         case .search:
             return "/discovery/v2/events.json"
         }
     }
-    // MARK: - method
+    // MARK: method
     var method: RequestMethod {
         switch self {
         case .search:
             return .get
         }
     }
-    // MARK: - header
+    // MARK: header
     var header: [String : String]? {
         switch self {
         case .search:
             return nil
         }
     }
-    // MARK: - body
+    // MARK: body
     var body: [String : String]? {
         switch self {
         case .search:
             return nil
         }
     }
-    // MARK: - query
+    // MARK: query
     var queryItems: [String : String]? {
         switch self {
         case .search(let term):

@@ -7,10 +7,12 @@
 
 import Foundation
 
+// MARK: - SearchRemoteDataManagerProtocol
 protocol SearchRemoteDataManagerProtocol {
     func getEvents(term: String) async throws -> [EventDTO]
 }
 
+// MARK: - SearchRemoteDataManager
 struct SearchRemoteDataManager: HTTPClient, SearchRemoteDataManagerProtocol {
     func getEvents(term: String) async throws -> [EventDTO] {
         let response = await sendRequest(endpoint: LiveNationEndpoint.search(term: term), responseModel: SearchResponseDTO.self)

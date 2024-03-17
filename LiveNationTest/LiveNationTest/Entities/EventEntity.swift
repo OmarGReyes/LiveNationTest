@@ -6,7 +6,9 @@
 //
 import Foundation
 
+// MARK: - EventEntity
 struct EventEntity {
+    // MARK: Properties
     let id: String
     let name: String
     let date: String
@@ -16,6 +18,7 @@ struct EventEntity {
     let imageURLString: String
 }
 
+// MARK: - Computed properties
 extension EventEntity {
     var formattedDate: String {
         let dateFormatter = DateFormatter()

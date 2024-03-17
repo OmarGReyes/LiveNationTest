@@ -5,8 +5,9 @@
 //  Created by Omar Gonzalez on 16/03/24.
 //
 
-// MARK: Endpoint Protocol
+// MARK: - Endpoint Protocol
 protocol Endpoint {
+    // MARK: Properties
     var scheme: String { get }
     var host: String { get }
     var path: String { get }
@@ -16,7 +17,7 @@ protocol Endpoint {
     var queryItems: [String: String]? { get }
 }
 
-// MARK: Endpoint Extension
+// MARK: - Endpoint Extension
 extension Endpoint {
     var scheme: String {
         return "https"

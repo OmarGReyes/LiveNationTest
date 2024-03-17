@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-// MARK: CacheAsyncImage
+// MARK: - CacheAsyncImage
 struct CacheAsyncImage<Content: View>: View {
-    // MARK: - Properties
+    // MARK: Properties
     private let url: URL
     private let scale: CGFloat
     private let transaction: Transaction
     private let content: (AsyncImagePhase) -> Content
 
-    // MARK: - Initializer
+    // MARK: Initializer
     init(url: URL,
          scale: CGFloat = Constants.cacheAsyncImageScale,
          transaction: Transaction = Transaction(),
@@ -26,7 +26,7 @@ struct CacheAsyncImage<Content: View>: View {
         self.content = content
     }
 
-    // MARK: - body
+    // MARK: body
     var body: some View {
         if let cachedImage = ImageCache[url] {
             content(.success(cachedImage))
@@ -37,7 +37,7 @@ struct CacheAsyncImage<Content: View>: View {
         }
     }
 
-    // MARK: - Methods
+    // MARK: Methods
     func cacheAndRender(phase: AsyncImagePhase) -> some View {
         if case .success(let image) = phase {
             ImageCache[url] = image
@@ -46,7 +46,7 @@ struct CacheAsyncImage<Content: View>: View {
     }
 }
 
-// MARK: ImageCache class
+// MARK: - ImageCache class
 fileprivate class ImageCache {
     static private var cache: [URL: Image] = [:]
 
