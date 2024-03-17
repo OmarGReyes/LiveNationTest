@@ -13,7 +13,7 @@ protocol SearchRemoteDataManagerProtocol {
 
 struct SearchRemoteDataManager: HTTPClient, SearchRemoteDataManagerProtocol {
     func getEvents(term: String) async throws -> [EventDTO] {
-        let response = await sendRequest(endpoint: LiveNationEndpoint.search(term: term), responseModel: SearchResponse.self)
+        let response = await sendRequest(endpoint: LiveNationEndpoint.search(term: term), responseModel: SearchResponseDTO.self)
         
         switch response {
         case .success(let success):

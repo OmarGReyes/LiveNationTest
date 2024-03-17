@@ -1,23 +1,13 @@
 //
-//  SearchResponse.swift
+//  EventDTO.swift
 //  LiveNationTest
 //
-//  Created by Omar Gonzalez on 16/03/24.
+//  Created by Omar Gonzalez on 17/03/24.
 //
 
 import Foundation
 
-struct SearchResponse: Codable {
-    let embedded: SearchResponseEmbedded
-    enum CodingKeys: String, CodingKey {
-        case embedded = "_embedded"
-    }
-}
-
-struct SearchResponseEmbedded: Codable {
-    let events: [EventDTO]
-}
-
+// MARK: - EventDTO
 struct EventDTO: Codable {
     let name, id: String
     let images: [EventImage]
@@ -30,6 +20,7 @@ struct EventDTO: Codable {
     }
 }
 
+// MARK: - EventDTO+Mapping
 extension EventDTO {
     func toDomain() -> EventEntity {
         EventEntity(id: self.id,

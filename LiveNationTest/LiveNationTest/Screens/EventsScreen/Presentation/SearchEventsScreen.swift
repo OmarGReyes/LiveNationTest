@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+// MARK: - SearchEventsScreen
 struct SearchEventsScreen: View {
-    // MARK: - ViewModel
+    // MARK: ViewModel
     @StateObject var viewModel: SearchEventsViewModel
+    
+    // MARK: Body
     var body: some View {
         VStack(spacing: Constants.searchEventsScreenVStackSpacing) {
             titleView
@@ -34,9 +37,9 @@ struct SearchEventsScreen: View {
     }
 }
 
-// MARK: Views
+// MARK: - Views
 extension SearchEventsScreen {
-    // MARK: - Custom SearchBar
+    // MARK: customSearchBar
     private var customSearchBar: some View {
         CustomSearchBar(searchText: $viewModel.searchText) {
             Task {
@@ -47,12 +50,12 @@ extension SearchEventsScreen {
         }
     }
     
-    // MARK: - progressView
+    // MARK: progressView
     private var progressView: some View {
         LargeProgressView()
     }
     
-    // MARK: - emptyView
+    // MARK: emptyView
     private var emptyView: some View {
         VStack {
             EmptyView()
@@ -60,7 +63,7 @@ extension SearchEventsScreen {
         }
     }
     
-    // MARK: - eventListView
+    // MARK: eventListView
     private var eventListView: some View {
         List(viewModel.events, id: \.id) { event in
             EventListView(event: event)
@@ -70,7 +73,7 @@ extension SearchEventsScreen {
         }
     }
     
-    // MARK: - titleView
+    // MARK: titleView
     private var titleView: some View {
         HStack(alignment: .center, content: {
             Text(Constants.searchEventsScreenTitle)
