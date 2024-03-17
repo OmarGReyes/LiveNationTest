@@ -115,7 +115,6 @@
 			children = (
 				0D0C1E942BA60E3200B1AFF3 /* LiveNationTestApp.swift */,
 				0D0C1EBB2BA62AF500B1AFF3 /* Common */,
-				0D0C1EB82BA62A3A00B1AFF3 /* Helpers */,
 				0D0C1EC22BA63ED000B1AFF3 /* Entities */,
 				0D0C1EA22BA60E4A00B1AFF3 /* Networking */,
 				0D0C1EB12BA61DD800B1AFF3 /* Screens */,
@@ -183,17 +182,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0D0C1EB82BA62A3A00B1AFF3 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				0D0C1EB92BA62A5400B1AFF3 /* ViewState.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		0D0C1EBB2BA62AF500B1AFF3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0D0C1EB92BA62A5400B1AFF3 /* ViewState.swift */,
 				0D0C1EBC2BA62B0500B1AFF3 /* LargeProgressView.swift */,
 				0D0C1EC52BA6461E00B1AFF3 /* CacheAsyncImage.swift */,
 				0D0C1ECB2BA6662100B1AFF3 /* AppConstants.swift */,
