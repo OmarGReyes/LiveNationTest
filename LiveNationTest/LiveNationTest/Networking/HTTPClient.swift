@@ -27,7 +27,6 @@ extension HTTPClient {
         })
         
         guard let url = urlComponents.url else {
-//            URLError(.badURL)
             return .failure(.invalidURL)
         }
         
@@ -39,28 +38,27 @@ extension HTTPClient {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         }
         
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForResource = Constants.networkTimeoutInterval
+        let session = URLSession(configuration: sessionConfig)
+        
         do {
-            let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
+            let (data, response) = try await session.data(for: request, delegate: nil)
             guard let response = response as? HTTPURLResponse else {
-//                URLError(.badServerResponse)
                 return .failure(.noResponse)
             }
             switch response.statusCode {
             case 200...299:
                 guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {
-//                    URLError(.cannotDecodeRawData)
                     return .failure(.decode)
                 }
                 return .success(decodedResponse)
             case 401:
-//                URLError(.userAuthenticationRequired)
                 return .failure(.unauthorized)
             default:
-//                 URLError(.unknown)
                 return .failure(.unexpectedStatusCode)
             }
         } catch {
-//          URLError(.unknown)
             return .failure(.networkingError)
         }
     }

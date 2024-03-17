@@ -45,7 +45,8 @@ extension LiveNationEndpoint: Endpoint {
         switch self {
         case .search(let term):
             return ["keyword": term,
-                    "apikey": "DW0E98NrxUIfDDtNN7ijruVSm60ryFLX"]
+                    "apikey": Constants.apiKey,
+                    "size": Constants.sizeOfSearchResponse]
         }
     }
 }

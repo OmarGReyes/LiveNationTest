@@ -23,6 +23,6 @@ extension Endpoint {
     }
 
     var host: String {
-        return "app.ticketmaster.com"
+        return Constants.ticketMasterHost
     }
 }

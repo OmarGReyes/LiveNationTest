@@ -8,26 +8,43 @@
 import Foundation
 
 struct SearchResponse: Codable {
-    let events: [EventDTO]
-    
+    let embedded: SearchResponseEmbedded
     enum CodingKeys: String, CodingKey {
-        case events = "_embedded"
-    }
-}
-
-struct EventDTO: Codable {
-    let name: String
-    let images: [Image]
-    let embedded: EventEmbedded?
-    
-    enum CodingKeys: String, CodingKey {
-        case name, images
         case embedded = "_embedded"
     }
 }
 
+struct SearchResponseEmbedded: Codable {
+    let events: [EventDTO]
+}
+
+struct EventDTO: Codable {
+    let name, id: String
+    let images: [EventImage]
+    let embedded: EventEmbedded?
+    let dates: Dates?
+    
+    enum CodingKeys: String, CodingKey {
+        case name, images, dates, id
+        case embedded = "_embedded"
+    }
+}
+
+extension EventDTO {
+    func toDomain() -> EventEntity {
+        EventEntity(id: self.id,
+                    name: self.name,
+                    date: dates?.start?.localDate ?? "",
+                    venue: self.embedded?.venues?.first?.name ?? "",
+                    city: self.embedded?.venues?.first?.city?.name ?? "",
+                    state: self.embedded?.venues?.first?.state?.stateCode ?? "",
+                    imageURLString: self.images.first?.url ?? "noUrl"
+        )
+    }
+}
+
 // MARK: - Image
-struct Image: Codable {
+struct EventImage: Codable {
     let url: String?
     let width, height: Int?
     let fallback: Bool?
@@ -54,7 +71,7 @@ struct EventEmbedded: Codable {
 struct Venue: Codable {
     let name: String?
     let city: City?
-    let state: State?
+    let state: EventState?
 }
 
 // MARK: - City
@@ -63,6 +80,6 @@ struct City: Codable {
 }
 
 // MARK: - State
-struct State: Codable {
+struct EventState: Codable {
     let name, stateCode: String?
 }

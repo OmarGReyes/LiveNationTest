@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct LiveNationTestApp: App {
+    
+    let viewModel: SearchEventsViewModel
+    
+    init() {
+        let searchRemoteDataManager = SearchRemoteDataManager()
+        let searchRepository = SearchRepository(searchRemoteDataManager: searchRemoteDataManager)
+        self.viewModel = SearchEventsViewModel(searchRepository: searchRepository)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SearchEventsScreen(viewModel: viewModel)
         }
     }
 }
