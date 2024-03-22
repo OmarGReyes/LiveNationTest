@@ -19,15 +19,15 @@ final class SearchRemoteDataManagerTests: XCTestCase {
         let event = events.first!
         
         // Then
-        XCTAssertEqual(event.name, "Event 1")
-        XCTAssertEqual(event.id, "1")
-        XCTAssertTrue(event.images.isEmpty)
+        XCTAssertEqual(event.name, "James Taylor")
+        XCTAssertEqual(event.id, "vv1AeZkv6GkdHfkJ4")
+        XCTAssertFalse(event.images.isEmpty)
     }
 }
 
-fileprivate struct SearchRemoteDataManagerMock: HTTPClient, SearchRemoteDataManagerProtocol {
+fileprivate class SearchRemoteDataManagerMock: SearchRemoteDataManagerProtocol, Mockable {
     func getEvents(term: String) async throws -> [EventDTO] {
-        let response = await sendRequest(endpoint: LiveNationEndpoint.search(term: term), responseModel: SearchResponseDTO.self)
+        let response = await getSearchResponse()
         
         switch response {
         case .success(let success):
@@ -37,17 +37,7 @@ fileprivate struct SearchRemoteDataManagerMock: HTTPClient, SearchRemoteDataMana
         }
     }
     
-    func sendRequest<T>(endpoint: Endpoint,
-                        responseModel: T.Type) async -> Result<T, RequestError> {
-        let searchEmbeddedMock = SearchResponseEmbeddedDTO(events: [
-            EventDTO(name: "Event 1",
-                     id: "1",
-                     images: [],
-                     embedded: nil,
-                     dates: nil)
-        ])
-        
-        let responseMockModel = SearchResponseDTO(embedded: searchEmbeddedMock)
-        return .success(responseMockModel as! T)
+    func getSearchResponse() async -> Result<SearchResponseDTO, RequestError> {
+        return .success(loadJSON(filename: "response", type: SearchResponseDTO.self))
     }
 }
